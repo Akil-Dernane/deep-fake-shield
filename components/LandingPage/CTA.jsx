@@ -18,7 +18,7 @@ function CTA() {
 
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center z-10 relative">
           <Link
-            href={"/upload"}
+            href={"/dashboard"}
             className="w-full md:w-auto bg-linear-to-br from-[#adc6ff] to-[#357df1] text-[#002e6a] uppercase font-bold px-10 py-5 rounded-xl transition-all duration-200 active:scale-95 shadow-lg"
           >
             Analyze an Image
