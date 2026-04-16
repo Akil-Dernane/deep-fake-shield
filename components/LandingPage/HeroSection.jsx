@@ -31,7 +31,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Link href="/upload">
+            <Link href="/dashboard/analyze">
               <button className="bg-linear-to-br from-[#adc6ff] to-[#357df1] text-[#002e6a] font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:opacity-90 active:scale-95 shadow-lg shadow-blue-500/20 cursor-pointer flex items-center gap-2">
                 <ShieldCheck size={20} />
                 Analyze Image
