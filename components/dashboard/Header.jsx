@@ -1,4 +1,5 @@
-import { LogOut, User, Settings } from "lucide-react";
+import { User } from "lucide-react";
+import LogoutButton from "./Logout";
 
 function Header() {
   return (
@@ -18,9 +19,7 @@ function Header() {
         </button>
 
         {/* Logout */}
-        <button className="opacity-80 hover:opacity-100 transition-opacity text-[#eb4141]">
-          <LogOut size={20} />
-        </button>
+        <LogoutButton />
       </div>
 
       {/* bottom line */}

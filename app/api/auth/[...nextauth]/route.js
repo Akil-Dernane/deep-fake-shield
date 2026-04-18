@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { use } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -7,13 +8,13 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const authOptions = {
   providers: [
     CredentialsProvider({
-      name: "Curator Login",
+      name: "Sentinel Login",
       credentials: {
-        email: { label: "Email", type: "email" },
+        username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const res = await fetch(`${API_URL}/api/token/`, {
+        const res = await fetch(`${API_URL}/api/auth/login/`, {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },
@@ -33,11 +34,13 @@ export const authOptions = {
       if (user) {
         token.accessToken = user.access;
         token.refreshToken = user.refresh;
+        token.user = user.user;
       }
       return token;
     },
     async session({ session, token }) {
       session.accessToken = token.accessToken;
+      session.user = token.user;
       return session;
     },
   },

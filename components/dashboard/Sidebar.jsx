@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "next-auth/react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +9,10 @@ import { Image as image_icon, TestTube2, History, Plus } from "lucide-react";
 
 function Sidebar() {
   const pathname = usePathname();
+
+  const { data: session, status } = useSession();
+
+  if (status === "loading") return <p>Syncing...</p>;
 
   const navItems = [
     { name: "Gallery", href: "/dashboard", icon: image_icon },
@@ -78,9 +83,11 @@ function Sidebar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-bold text-white">A. Vance</span>
-            <span className="text-[10px] uppercase tracking-tighter text-slate-500 font-semibold">
-              Level 4 Clearance
+            <span className="text-sm font-bold text-white capitalize">
+              {session?.user?.first_name} {session?.user?.last_name}
+            </span>
+            <span className="text-sm tracking-tighter text-slate-500 font-semibold">
+              {session?.user?.username}
             </span>
           </div>
         </div>

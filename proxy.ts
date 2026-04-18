@@ -5,6 +5,6 @@ export default withAuth({});
 
 export const config = {
   // Protecting dashboard, profile, and any sub-routes
-  // matcher: ["/dashboard/:path*"],
-  matcher: [],
+  matcher: ["/dashboard/:path*"],
+  // matcher: [],
 };
