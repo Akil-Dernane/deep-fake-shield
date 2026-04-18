@@ -12,8 +12,6 @@ function Sidebar() {
 
   const { data: session, status } = useSession();
 
-  if (status === "loading") return <p>Syncing...</p>;
-
   const navItems = [
     { name: "Gallery", href: "/dashboard", icon: image_icon },
     { name: "Analyze", href: "/dashboard/analyze", icon: TestTube2 },
@@ -82,14 +80,16 @@ function Sidebar() {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-bold text-white capitalize">
-              {session?.user?.first_name} {session?.user?.last_name}
-            </span>
-            <span className="text-sm tracking-tighter text-slate-500 font-semibold">
-              {session?.user?.username}
-            </span>
-          </div>
+          {status !== "loading" && (
+            <div className="flex flex-col">
+              <span className="text-sm font-bold text-white capitalize">
+                {session?.user?.first_name} {session?.user?.last_name}
+              </span>
+              <span className="text-sm tracking-tighter text-slate-500 font-semibold">
+                {session?.user?.username}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </aside>
